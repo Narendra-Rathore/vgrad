@@ -1,1 +1,1 @@
-test
+<?php phpinfo(); ?>
