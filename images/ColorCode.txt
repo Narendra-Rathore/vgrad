@@ -1,0 +1,5 @@
+RED : ca072d
+GRAY : c9cacb
+
+Font Color Gray : 404040
+Font Color Red : ca072d

@@ -1,0 +1,261 @@
+body {
+
+}
+
+.card {
+    padding: .5em;
+    border: none;
+}
+
+#grads_area {
+    margin-top: 2em;
+}
+
+.gradlink .card-title {
+    text-align: center;
+}
+
+#SchoolColor1 {
+    display: block;
+    height: 30px;
+}
+
+#SchoolColor2 {
+    display: block;
+    height: 30px;
+}
+
+#LogoBg {
+    height: 60px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+}
+
+#LeftWhite {
+    background: white;
+    height: 60px;
+    float: left;
+    text-align: center;
+    width: 250px;
+}
+
+.container {
+    margin-top: 2em;
+}
+
+#schoolwelcome {
+    text-align: center;
+}
+
+#schoollogo img {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.card-image {
+    padding: 2em;
+}
+
+.modal-container {
+    border-radius: 10px;
+    overflow-y: hidden;
+}
+
+.modal-body {
+    overflow-y: hidden;
+}
+
+audio {
+    border-radius: 10px;
+    max-height: 32px;
+    max-width: 85%;
+}
+
+#detail-control-farleft {
+    text-align: left;
+}
+
+#detail-control-midright {
+    height: 50px;
+    display: inline-flex;
+}
+
+a.social {
+    margin-right: .5em;
+}
+
+#video {
+    padding-top: 1em;
+    margin-top: 2em;
+    display: inline-flex;
+    pointer-events: none;
+}
+
+#video iframe {
+    margin: 0 auto;
+    pointer-events: auto;
+}
+
+div#message {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    text-align: justify;
+}
+
+#grad_detail {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+div.social {
+    margin-right: .5em;
+    display: inline-flex;
+}
+
+div.social a img {
+    height: 30px;
+    width: 40px;
+}
+div.social > .badge {
+    transform: translate(1.5rem, 1.5rem);
+    position: absolute;
+}
+
+div#class_title {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 2em;
+}
+
+div#search_area {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: .5em;
+    width: 25em;
+    padding: 1em;
+    height: 4em;
+}
+
+div#filters_area {
+    text-align: center;
+}
+
+.filter {
+    width: 25em;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.filter > select {
+    width: 19em;
+}
+
+#search_box {
+    margin-left: 1em;
+    width: 19em;
+    border-radius: 5px;
+}
+
+div#empty_search {
+    text-align: center;
+    color: red;
+}
+
+#twitter_feed {
+    text-align: right;
+    padding-right: 5em;
+}
+
+#instagram_feed > iframe {
+    max-height: 450px;
+    width: 450px !important;
+    max-width: 450px !important;
+    overflow-y: hidden;
+    padding-left: 5em;
+}
+
+#video_thumbs {
+    display: inline-flex;
+    margin-top: 2em;
+    text-align: center;
+    vertical-align: top;
+    pointer-events: none;
+}
+
+.video_thumb {
+    margin: 0 auto;
+    margin-right: .5em;
+    margin-left: .5em;
+    width: 350px;
+    pointer-events: auto;
+}
+
+.video_thumb td.speaker_info {
+    text-align: center;
+}
+
+.speaker_title {
+    font-style: italic;
+}
+
+.speaker_info {
+    width: 200px;
+}
+
+div#video_thumb_collection {
+    width: 50%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    pointer-events: none;
+}
+
+.thumb_video_cell {
+    text-align: center;
+}
+
+.accordion-header i {
+    display: inline-flex;
+}
+
+.accordion-header h3 {
+    display: inline-flex;
+}
+
+.accordion label {
+    text-align: center;
+}
+
+.detail_audio_control {
+    text-align: center;
+}
+
+#detail_control_middle {
+    text-align: center;
+}
+
+#video_container {
+    text-align: center;
+    height: 500px;
+    pointer-events: none;
+}
+
+.speaker_name {
+    vertical-align: bottom;
+}
+
+.speaker_title {
+    vertical-align: top;
+}
+
+img.grad_thumbnail {
+    margin: 0 auto;
+}
+
+#search_functions {
+    text-align: center;
+}
