@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-bind="text: Settings.Title"></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/knockout-3.5.1.js"></script>
+</head>
+
+<body onload="viewMore()">
+<header>
+	<div class="fixed-header">
+	<div class="container-fluid menu">
+		<div id="menu-bg" role="img" aria-label="School colors of The Citadel">
+            <span data-bind="style: {background: Settings.PrimaryColor}" id="menu-bg-first" style="background: rgb(201, 202, 203);"></span>
+            <span data-bind="style: {background: Settings.SecondaryColor}" id="menu-bg-second" style="background: rgb(202, 7, 45);"></span>
+        </div>
+		<div class="logo-bg" role="img" aria-label="Marching Order logo">
+            <div class="logo-img">
+                <img src="images/marchingorder-logo.png" alt="Marching Order">
+            </div>
+            <img class="logo-angle" src="images/mask.png" role="none">
+        </div>
+	</div>
+
+	<nav class="navbar menu-bar">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <!-- <a class="navbar-brand" href="#"><img src="images/marchingorder-logo.png" alt="Marching Order"></a> -->
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a id="menu-video" href="#"> Videos</a></li>
+		    <li><a id="menu-chancellor" href="#"> Letter from Chancellor</a></li>
+		    <li><a id="menu-social" href="#"> Social Media</a></li>
+		    <li><a id="menu-student" href="#"> Students</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	</div>
+</header>
+
+	<div class="container-fluid text-center welcome-note">
+		 <img class="img-responsive text-center" data-bind="attr: {src: Settings.Logofile, alt: Settings.LogofileAltText}" role="img">
+		  <h3 data-bind="text: Settings.Welcome"></h3>
+	</div>
+	
+
+	<div class="container-fluid video-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<div id="video" class="" tabindex="1" data-bind="attr: {'aria-label': VideoSubtitles()[0].arialabel}">
+	                    <div id="main_video" class="loading loading-lg"></div>
+	                </div>
+				</div>				
+				<div class="col-md-5">
+					<div class="row video-list">
+						<div class="col-xs-12 col-sm-6 col-md-12" >
+							<div class="row list-item" data-bind="click: MakeMain.bind($data, '1')">
+								<div class="col-xs-5" >
+									<div id="thumb_video1" class="loading"></div>
+								</div>
+								<div class="col-xs-7 list-item-text">
+									<p class="video-name" data-bind="text: VideoSubtitles()[1].name">
+									</p>
+									<p class="video-title" data-bind="text: VideoSubtitles()[1].title">
+									</p>
+								</div>
+							</div>
+						</div>
+					
+						<div class="col-xs-12 col-sm-6 col-md-12">
+							<div class="row list-item" data-bind="click: MakeMain.bind($data, '2')">
+								<div class="col-xs-5" data-bind="click: MakeMain.bind($data, '2')">
+									<div id="thumb_video2" class="loading"></div>
+								</div>
+								<div class="col-xs-7 list-item-text">
+									<p class="video-name" data-bind="text: VideoSubtitles()[2].name">
+									</p>
+									<p class="video-title" data-bind="text: VideoSubtitles()[2].title">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row video-list">
+						<div class="col-xs-12 col-sm-6 col-md-12">
+							<div class="row list-item" data-bind="click: MakeMain.bind($data, '3')">
+								<div class="col-xs-5" data-bind="click: MakeMain.bind($data, '3')">
+									<div id="thumb_video3" class="loading"></div>
+								</div>
+								<div class="col-xs-7 list-item-text">
+									<p class="video-name" data-bind="text: VideoSubtitles()[3].name">
+									</p>
+									<p class="video-title" data-bind="text: VideoSubtitles()[3].title">
+									</p>
+								</div>
+							</div>
+						</div>
+					
+						<div class="col-xs-12 col-sm-6 col-md-12" data-bind="click: MakeMain.bind($data, '4')">
+							<div class="row list-item" >
+								<div class="col-xs-5" >
+									<div id="thumb_video4" class="loading"></div>
+								</div>
+								<div class="col-xs-7 list-item-text">
+									<p class="video-name" data-bind="text: VideoSubtitles()[4].name">
+									</p>
+									<p class="video-title" data-bind="text: VideoSubtitles()[4].title">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<div class="container-fluid chancellor-message">
+		<div class="container">
+			<h2>
+				<span data-bind="text: Settings.MessageTitle"></span>
+				<span class="icon" >
+					<img src="images/collapse.png" data-toggle="collapse" data-target="#chancellor-message">		
+				</span>
+			</h2>
+			<div id="chancellor-message" class="collapse in">
+				<div class="message-body" data-bind="html: Settings.Message" tabindex="6"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container-fluid social-feed">
+		<div class="container">
+			<h2>
+				<span data-bind="text: Settings.SocialTitle"></span>
+				<!-- <span class="live"><div class="lds-ripple"><div></div><div></div></div>Live</span> -->
+				<span class="live"><b class="lds-ripple">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:transparent;display:block;" width="20px" height="20px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+					<circle cx="50" cy="50" r="27.1646" fill="none" stroke="#fdfdfd" stroke-width="15">
+					  <animate attributeName="r" repeatCount="indefinite" dur="1s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline" begin="-0.5s"></animate>
+					  <animate attributeName="opacity" repeatCount="indefinite" dur="1s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline" begin="-0.5s"></animate>
+					</circle>
+					<circle cx="50" cy="50" r="3.91397" fill="none" stroke="#ffffff" stroke-width="15">
+					  <animate attributeName="r" repeatCount="indefinite" dur="1s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline"></animate>
+					  <animate attributeName="opacity" repeatCount="indefinite" dur="1s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline"></animate>
+					</circle>
+					</svg>
+				</b>Live</span>
+				<span ></span>
+				<span class="icon" >
+					<img src="images/collapse.png" data-toggle="collapse" data-target="#social-message">		
+				</span>
+			</h2>
+			<div class="row collapse in" id="social-message" >
+				<div class="col-sm-6" id="twitter">
+					<a class="twitter-timeline" data-width="100%" data-height="450"
+                    href="https://twitter.com/NAACOTweets?ref_src=twsrc%5Etfw"></a>
+                	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</div>
+				<div class="col-sm-6" id="instagram">
+					<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B8ALP5ip9R8/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px;   padding:0;  width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+	                    <div style="padding:16px;"> <a
+	                            href="https://www.instagram.com/p/B8ALP5ip9R8/?utm_source=ig_embed&amp;utm_campaign=loading"
+	                            style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+	                            target="_blank">
+	                            <div style=" display: flex; flex-direction: row; align-items: center;">
+	                                <div
+	                                    style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+	                                </div>
+	                                <div
+	                                    style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+	                                    <div
+	                                        style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+	                                    </div>
+	                                    <div
+	                                        style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div style="padding: 19% 0;"></div>
+	                            <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px"
+	                                    height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"
+	                                    xmlns:xlink="https://www.w3.org/1999/xlink">
+	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+	                                        <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+	                                            <g>
+	                                                <path
+	                                                    d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
+	                                                </path>
+	                                            </g>
+	                                        </g>
+	                                    </g>
+	                                </svg></div>
+	                            <div style="padding-top: 8px;">
+	                                <div
+	                                    style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+	                                    View this post on Instagram</div>
+	                            </div>
+	                            <div style="padding: 12.5% 0;"></div>
+	                            <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+	                                <div>
+	                                    <div
+	                                        style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
+	                                    </div>
+	                                    <div
+	                                        style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
+	                                    </div>
+	                                    <div
+	                                        style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
+	                                    </div>
+	                                </div>
+	                                <div style="margin-left: 8px;">
+	                                    <div
+	                                        style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
+	                                    </div>
+	                                    <div
+	                                        style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
+	                                    </div>
+	                                </div>
+	                                <div style="margin-left: auto;">
+	                                    <div
+	                                        style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
+	                                    </div>
+	                                    <div
+	                                        style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
+	                                    </div>
+	                                    <div
+	                                        style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </a>
+	                        <p style=" margin:8px 0 0 0; padding:0 4px;"> <a
+	                                href="https://www.instagram.com/p/B8ALP5ip9R8/?utm_source=ig_embed&amp;utm_campaign=loading"
+	                                style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;"
+	                                target="_blank">In a ceremony this afternoon, 90 cadets were recognized for their
+	                                outstanding work during the fall 2019 semester by being named to the President&#39;s
+	                                List. Over 450 cadets were recognized with Gold stars for earning a 3.7 GPA or higher
+	                                during the fall semester. . . . . . #thecitadel #citadel #goldstars #rotc #jrotc
+	                                #militarycollege #military</a></p>
+	                        <p
+	                            style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+	                            A post shared by <a
+	                                href="https://www.instagram.com/thecitadel1842/?utm_source=ig_embed&amp;utm_campaign=loading"
+	                                style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
+	                                target="_blank"> The Citadel</a> (@thecitadel1842) on <time
+	                                style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;"
+	                                datetime="2020-01-31T23:38:11+00:00">Jan 31, 2020 at 3:38pm PST</time></p>
+	                    </div>
+	                </blockquote>
+	                <script async src="https://www.instagram.com/embed.js"></script>
+				</div>
+			</div>
+			<div >
+				
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container-fluid class-section">
+		<div class="container">
+			<h2>
+				<span data-bind="text: Settings.ClassTitle"></span>
+				<span class="icon" >
+					<img src="images/collapse.png" data-toggle="collapse" data-target="#full-container">		
+				</span>
+			</h2>
+
+		</div>
+		<!-- Search Form -->
+		<div class="full-container collapse in" id="full-container">
+		<div class="container class-form">
+			<form class="form-inline text-center" action="">
+			    <div class="form-group">
+			      	<select class="form-select form-control" tabindex="9" aria-label="Filter by College">
+                        <option>Filter by College</option>
+                        <option>College of Arts and Sciences</option>
+                        <option>College of Engineering</option>
+                    </select>
+			    </div>
+			    <div class="form-group">
+			      <select class="form-select form-control" tabindex="10" aria-label="Filter by Degree">
+                            <option>Filter by Degree</option>
+                            <option>Bachelor</option>
+                            <option>Master</option>
+                            <option>Docotral</option>
+                        </select>
+			    </div>
+			    <div class="form-group search-container">
+			    	<input class="form-control search-box" type="text" placeholder="Search" id="search_box" role="searchbox" tabindex="11">
+			    	<img src="images/search.png" id="input_img">
+			    </div>
+			    			    
+			</form>
+		</div>
+		
+		<!-- Student list -->
+		<div class="container" id="class-section">
+			<div id="grads_area" data-bind="ifnot: emptySearch">
+				<div  class="row" data-bind="foreach: SelectedGrads">
+                    <gradsmall class="col-xs-12 col-sm-6 col-md-4 student-block" params="grad: $data"></gradsmall>
+                </div>
+                 
+			</div>
+			<div data-bind="if: emptySearch">
+				<h3>Your search returned no results.</h3>
+			</div>
+		</div>
+
+		<div class="container view-more-container">
+			<div class="view-more-section text-center" data-bind="ifnot: emptySearch">
+                <button id="view-more">View More</button>                
+            </div>
+		</div>
+		</div>
+	</div>
+
+	<div class="container-fluid footer">
+	    <div class="footer-logo-bg" role="img" aria-label="Marching Order logo">
+	        <div class="footer-logo">
+	            <img class="logo-angle" src="images/mask_footer.png" role="none">
+	            <img class="img-responsive" data-bind="attr: {src: Settings.Logofile, alt: Settings.LogofileAltText}" role="img" src="images/schoollogo.png" alt="Rutgers">
+	        </div>
+	     </div>
+	    <div id="footer-bg" role="img" aria-label="Rutgers logo">
+	        <span data-bind="style: {background: Settings.PrimaryColor}" id="menu-bg-first" style="background: rgb(201, 202, 203);"></span>
+            <span data-bind="style: {background: Settings.SecondaryColor}" id="menu-bg-second" style="background: rgb(202, 7, 45);"></span>
+	    </div>
+	</div>
+
+	<template id="grads_tmpl">
+        <div data-bind="attr: {'aria-label': grad.thumbnaillabel}">
+            <a class="gradlink" data-bind="attr: {id: grad.barcode, tabindex: grad.tabPos}, click: vgrad.showDetail"
+                role="button">
+                
+                <div class="card-image">
+                	<div class="card-header hide-md">
+		                <div class="card-title h5" data-bind="text: grad.fullname, attr: {'aria-label': grad.thumbnaillabel}"></div>
+		            </div>
+                    <img class="img-responsive grad_thumbnail"
+                        data-bind="attr: {'src': grad.thumbimagesrc, 'alt': grad.altText}">
+                </div>
+            </a>
+        </div>
+    </template>
+
+
+    <!-- Modal -->
+	<div class="modal fade" id="grad_detail" role="dialog" data-backdrop="static" data-keyboard="false">
+	    <div class="modal-dialog" data-bind="using: FocusedGrad">	    
+	      	<!-- Modal content-->
+	      	<div class="modal-content">
+		        <div class="modal-header">
+		          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+		          	<h4 class="modal-title" data-bind="text: fullname">Modal Header</h4>
+		        </div>
+		        <div class="modal-body">
+		          	<div class="content">
+	                    <img class="img-responsive" data-bind="attr: {'src': imagesrc, 'aria-label': slidelabel}">
+	                </div>
+	                <div class="row modal-social">
+	                	<div class="col-xs-12 text-center">
+	                		<div id="detail_audio_control" data-bind="if: audiosrc">
+			                    <audio data-bind="if: audiosrc, attr: {src: audiosrc}" id="name_recording" controls>
+			                    </audio>
+			                </div>
+	                	</div>
+	                	<div class="col-xs-2 prev">
+	                		<a data-bind="visible: prevGrad, click: vgrad.showPrevDetail" id="prevgrad" role="button" aria-label="Visit Previous Graduate">
+	                            <span class="glyphicon glyphicon-menu-left"></span>
+	                        </a>
+	                	</div>
+	                	<div class="col-xs-8 text-center">
+			                <!-- <div id="detail_audio_control" data-bind="if: audiosrc">
+			                    <audio data-bind="if: audiosrc, attr: {src: audiosrc}" id="name_recording" controls>
+			                    </audio>
+			                </div> -->
+			                <div class="modal-footer" >
+			                	<div class="social" data-toggle="tooltip" title="Share on Facebook" >
+				                    <a role="button" aria-label="Share on Facebook">
+				                    	<img src="images/facebook.png" alt="Share on Facebook">
+				                    </a>
+				                </div>
+				                <div class="social" data-toggle="tooltip" title="Share on Twitter" >
+				                    <a role="button" aria-label="Share on Twitter">
+				                    	<img src="images/icon-twitter-small.png" alt="Share on Twitter">
+				                    </a>
+				                </div>
+				                <div class="social" data-toggle="tooltip" title="Share on Instagram" >
+				                    <a role="button" aria-label="Share on Instagram">
+				                    	<img src="images/instagram.png" alt="Share on Instagram">
+				                    </a>
+				                </div>
+				                <div class="social" data-toggle="tooltip" title="Copy link to Grad" >
+				                    <a role="button" aria-label="Copy the link to this Graduate"> 
+				                    	<img src="images/share.png" alt="Copy link to Grad">
+				                    </a>
+				                </div>
+				                <div class="social" data-toggle="tooltip" title="Download" >
+				                    <a role="button" aria-label="Download a copy of this graduate's slide">
+				                    	<img src="images/download.png" alt="Download">
+				                    </a>
+				                </div>
+			                </div>
+			            </div>
+		                <div class="col-xs-2 next">
+		                	<a data-bind="visible: nextGrad, click: vgrad.showNextDetail" id="nextgrad" role="button" aria-label="Visit Next Graduate">
+	                            <span class="glyphicon glyphicon-menu-right"></span>
+	                        </a>
+		                </div>
+		            </div>
+		        </div>	       
+	      	</div>	      
+	    </div>
+	</div>
+
+
+    <div class='scroll-top' id="scroll-top-div" style="visibility: hidden;">
+    	<img id="scroll-top" src="images/up.png">
+    	<p id="scroll-text">Move to Top</p>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="settings.js"></script>
+    <script src="graddata.js"></script>
+    <script src="js/jquery.ba-throttle-debounce.min.js"></script>
+    <script>
+
+    	var studentBlockHeight = 220;
+        var studentBlockTotalHeight = 0;
+        var viewmore = true;
+
+        $(document).ready(function () {
+            vgrad = vgrad || {};
+
+            vgrad.indexGradData();
+            vgrad.InitVideos();
+
+            ko.components.register('gradsmall', {
+                template: { element: 'grads_tmpl' },
+                viewModel: function (data) {
+                    this.grad = data.grad;
+                }
+            });
+            
+
+            ko.applyBindings(vgrad);
+
+            $('#search_box').val("");
+
+            $('#search_box').keyup($.debounce(250, function (e) {
+                e.preventDefault();
+                vgrad.filterSelected($('#search_box').val());
+                viewMore();
+            }));
+            $('#search_box').mouseup($.debounce(250, function (e) {
+                vgrad.filterSelected($('#search_box').val());                
+                viewMore();
+            }));
+
+            // If the URL has a hash, directly open the detail page.
+            if (location.hash && location.hash.length > 0) {
+                var grad = vgrad.GradDataIndexed[location.hash.slice(1)];
+                if (grad) {
+                    vgrad.showDetail({ grad: grad });
+                }
+            }
+
+            $('#accordion-1').prop('checked', true);
+
+            $('#video').keypress($.debounce(250, function (e) {
+                var keyCode = e.originalEvent.keyCode;
+                if (keyCode === 13) {
+                    e.preventDefault();
+                    var state = vgrad.videoPlayers[0].getPlayerState();
+                    if (state === 1) {
+                        // Playing, stop
+                        vgrad.videoPlayers[0].pauseVideo();
+                    } else {
+                        vgrad.videoPlayers[0].playVideo();
+                    }
+                }
+            }));
+
+            $("#scroll-top").on("click", function() {
+            	// window.scrollTo(0, 0);
+			    $("html").animate({ scrollTop: 0 }, 2000);
+			});
+
+            $('#menu-video').click(function (){
+			    $('html, body').animate({
+			      scrollTop: $(".video-container").offset().top - 80
+			    }, 1000)
+			    $('.navbar-toggle').click();
+			});
+
+			$('#menu-chancellor').click(function (){
+			    $('html, body').animate({
+			      scrollTop: $(".chancellor-message").offset().top - 80
+			    }, 1000)
+			    $('.navbar-toggle').click();
+			});
+
+			$('#menu-social').click(function (){
+			    $('html, body').animate({
+			      scrollTop: $(".social-feed").offset().top - 80
+			    }, 1000)
+			    $('.navbar-toggle').click();
+			});
+
+			$('#menu-student').click(function (){
+			    $('html, body').animate({
+			      scrollTop: $(".class-section").offset().top - 80
+			    }, 1000)
+			    $('.navbar-toggle').click();
+			});
+
+			$("h2 span.icon").click(function(){
+			  $(this).toggleClass("rot");
+			});
+			
+
+
+            
+            $(document).on('click','#view-more', function(){
+            	
+            	if(viewmore){
+            		$("#grads_area .student-block").show();
+            		viewmore = false;
+            		$('#view-more').text('View Less');
+            	}else{
+            		$("#grads_area .student-block").slice(6).hide();
+            		viewmore = true;
+            		$('#view-more').text('View More');
+            	}
+            	$(this).blur();
+            	// alert(viewmore);
+            	return true;
+     //        	if(viewmore){
+     //        		// $('#grads_area').animate({height:'auto'}, 500);
+     //        		$('#grads_area').animate({
+					//     height: $('#grads_area').get(0).scrollHeight
+					// }, 500, function(){
+					//     $(this).height('auto');
+					// });
+     //        		viewmore = false;
+     //        		$('#view-more').text('View Less');
+     //        		console.log('true');
+     //        	}else{
+     //        		$('#grads_area').animate({height:totalHeight+'px'}, 500);
+     //        		viewmore = true;
+     //        		console.log('false');
+     //        		$('#view-more').text('View More');
+     //        	}	
+            	// viewMore();
+            });
+            // viewMore();
+
+            $("#grads_area .student-block").slice(6).hide();
+            $('[data-toggle="tooltip"]').tooltip(); 
+
+        });
+
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        vgrad.videoPlayers = [];
+
+        function onYouTubeIframeAPIReady() {
+            var newPlayer = null;
+
+            for (var i = 0; i < vgrad.Settings.Videos.length; i++) {
+                var targetElement = "";
+                var vidHeight = '90';
+                var vidWidth = '100%';
+
+                if (i == 0) {
+                    // Main, large video
+                    targetElement = "main_video";
+                    vidHeight = '400';
+                    vidWidth = '100%';
+                } else {
+                    targetElement = 'thumb_video' + i;
+                }
+
+                newPlayer = new YT.Player(targetElement, {
+                    height: vidHeight,
+                    width: vidWidth,
+                    videoId: vgrad.Settings.Videos[i].id,
+                    autoplay: 0,
+                    disablekb: 0,
+                    rel: 0
+                });
+
+                vgrad.videoPlayers.push(newPlayer);
+            }
+        }
+        
+        var first_load = true;
+        function viewMore(){
+        	
+        	var count = $("#grads_area .student-block").length;
+        	var heightDiv = $(".student-block").outerHeight(true);
+        	console.log(count);
+        	console.log(heightDiv);
+
+        	if(heightDiv != undefined){
+	            if(heightDiv < 100){
+	            	heightDiv = studentBlockHeight;
+	            }else{
+	            	studentBlockHeight = heightDiv;
+	            }
+        	}else{
+        		heightDiv = studentBlockHeight;
+        	}
+            var widthDoc = $( document ).width();
+
+
+            if( widthDoc >= 992 ){
+            	totalHeight = heightDiv * 2;
+            }
+            else if( widthDoc >= 767 ){
+            	totalHeight = heightDiv * 3;
+            }else{
+            	totalHeight = heightDiv * 6;
+            }
+            totalHeight = Math.ceil(totalHeight);
+            // if(first_load){
+            // 	$('#grads_area').animate({height:totalHeight+'px'}, 500);
+            // 	first_load = false;
+            // }
+            
+        	console.log(totalHeight);
+            if(count > 6){
+            	$('.view-more-section').show();
+            	// $('#grads_area').animate({height:totalHeight+'px'}, 500);
+            }else{
+            	$('.view-more-section').hide();
+    //         	$('#grads_area').animate({
+				//     height: $('#grads_area').get(0).scrollHeight
+				// }, 500, function(){
+				//     $(this).height('auto');
+				// });
+            }
+
+            if(viewmore){
+            	$("#grads_area .student-block").slice(6).hide();
+        		$('#view-more').text('View More');
+        	}else{
+        		$("#grads_area .student-block").show();
+        		$('#view-more').text('View Less');        		
+        	}
+        }
+
+        // Show/Hide the button
+		window.onscroll = function() {
+		    var pageOffset = document.documentElement.scrollTop || document.body.scrollTop,
+		        btn = document.getElementById('scroll-top-div');
+		    if (btn) btn.style.visibility = pageOffset > 450 ? 'visible' : 'hidden';
+		};
+
+    </script>
+</body>
+
+</html>
